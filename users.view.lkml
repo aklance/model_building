@@ -67,23 +67,6 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
-
-  # ----- Sets of fields for drilling ------
-  set: detail {
-    fields: [
-      id,
-      last_name,
-      first_name,
-      events.count,
-      orders.count,
-      user_data.count
-    ]
-  }
-
   dimension: region {
     case: {
       when: {
@@ -109,4 +92,23 @@ view: users {
       else: "Unknown"
     }
   }
+
+  measure: count {
+    type: count
+    drill_fields: [detail*]
+  }
+
+  # ----- Sets of fields for drilling ------
+  set: detail {
+    fields: [
+      id,
+      last_name,
+      first_name,
+      events.count,
+      orders.count,
+      user_data.count
+    ]
+  }
+
+
 }
