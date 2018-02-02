@@ -47,4 +47,9 @@ view: events {
     sql_latitude: ${TABLE}.latitude ;;
     sql_longitude: ${TABLE}.longitude ;;
   }
+
+  dimension: zip {
+    type: zipcode
+    sql: ${TABLE}.zip ;;
+  }
 }
