@@ -41,4 +41,10 @@ view: events {
     type: count
     drill_fields: [id, users.last_name, users.first_name, users.id]
   }
+
+  dimension: user_location {
+    type: location
+    sql_latitude: ${TABLE}.latitude ;;
+    sql_longitude: ${TABLE}.longitude ;;
+  }
 }
