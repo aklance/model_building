@@ -70,23 +70,23 @@ view: users {
   dimension: region {
     case: {
       when: {
-        sql: ${state} in ('WA','OR','CA','NV','UT','WY','ID','MT','CO','AK','HI') ;;
+        sql: ${state} in ('Washington','Oregon','California','Nevada','Utah','Wyoming','Idaho','Montana','Colorado','Alaska','Hawaii') ;;
         label: "West"
       }
       when: {
-        sql: ${state} in ('AZ','NM','TX','OK') ;;
+        sql: ${state} in ('Arizona','New Mexico','Texas','Oklahoma') ;;
         label: "Southwest"
       }
       when: {
-        sql: ${state} in ('ND','SD','MN','IA','WI','MN','OH','IN','MO','NE','KS','MI','IL') ;;
+        sql: ${state} in ('North Dakota','South Dakota','Iowa','Wisconsin','Minnesota','Ohio','Indiana','Missouri','Nebraska','Kansas','Michigan','Illinois') ;;
         label: "Midwest"
       }
       when: {
-        sql: ${state} in ('MD','DE','NJ','CT','RI','MA','NH','PA','NY','VT','ME','DC') ;;
+        sql: ${state} in ('Maryland','Delaware','New Jersey','Connecticut','Rhode Island','Maine','New Hampshire','Pennsylvania','New York','Vermont','District of Columbia') ;;
         label: "Northeast"
       }
       when: {
-        sql: ${state} in ('AR','LA','MS','AL','GA','FL','SC','NC','VA','TN','KY','WV') ;;
+        sql: ${state} in ('Arkansas','Louisiana','Mississippi','Alabama','Georgia','Florida','South Carolina','North Carolina','Virginia','Tennessee','Kentucky','West Virginia') ;;
         label: "Southeast"
       }
       else: "Unknown"
