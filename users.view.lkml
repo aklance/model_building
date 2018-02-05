@@ -82,7 +82,7 @@ view: users {
         label: "Midwest"
       }
       when: {
-        sql: ${state} in ('Maryland','Delaware','New Jersey','Connecticut','Rhode Island','Maine','New Hampshire','Pennsylvania','New York','Vermont','District of Columbia') ;;
+        sql: ${state} in ('Maryland','Delaware','New Jersey','Connecticut','Rhode Island','Maine','New Hampshire','Pennsylvania','New York','Vermont','District of Columbia', 'Massachusetts') ;;
         label: "Northeast"
       }
       when: {
