@@ -75,6 +75,10 @@ explore: user_data {
   }
 }
 
-explore: users {}
-
-explore: users_nn {}
+explore: users {
+  join: events {
+    type:  left_outer
+    sql_on: ${users.id} = ${events.user_id};;
+    relationship: one_to_many
+  }
+}
