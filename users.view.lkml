@@ -51,7 +51,7 @@ view: users {
   dimension: gender {
     case: {
       when: {
-        sql: ${TABLE}.gender = "m";;
+        sql: ${TABLE}.gender = "Male";;
         }
         else: "Female"
   }
