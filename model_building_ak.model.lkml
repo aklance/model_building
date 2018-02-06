@@ -81,7 +81,7 @@ explore: user_data {
 explore: users {
   join: user_data {
     relationship: many_to_one
-    view_label: "user_data"
+    view_label: "User Data"
     sql_on: ${user_data.user_id} = ${users.id} ;;
   }
 }
