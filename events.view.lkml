@@ -21,6 +21,11 @@ view: events {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: browser {
+    type: string
+    sql: ${TABLE}.browser ;;
+  }
+
   dimension: type_id {
     type: number
     sql: ${TABLE}.type_id ;;

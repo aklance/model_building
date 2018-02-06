@@ -3,6 +3,7 @@ view: users {
 
   dimension: id {
     primary_key: yes
+    label : "Customer:  ID:"
     type: number
     sql: ${TABLE}.id ;;
   }
@@ -48,8 +49,12 @@ view: users {
   }
 
   dimension: gender {
-    type: string
-    sql: ${TABLE}.gender ;;
+    case: {
+      when: {
+        sql: ${TABLE}.gender = "m";;
+        }
+        else: "Female"
+  }
   }
 
   dimension: last_name {
@@ -69,10 +74,40 @@ view: users {
 
   dimension: age_tier {
     type: tier
-    tiers: [20,30,40,50,60,70]
+    tiers: [10, 20, 30, 40, 50, 60, 70, 80, 90]
     style: integer
     sql: ${age};;
+    drill_fields: [id, age]
     }
+
+  dimension: age_bracket {
+    case: {
+      when: {
+        sql: ${age} < 18 ;;
+        label: "Minor"
+      }
+      when: {
+        sql: ${age} between 18 and 35 ;;
+        label: "18-35"
+      }
+      when: {
+        sql: ${age} between 36 and 55 ;;
+        label: "36-65"
+      }
+      else: "Senior"
+    }
+    drill_fields: [id, age]
+  }
+
+  dimension: full_name {
+    type: string
+    sql: ${first_name} || ' ' || ${last_name} ;;
+  }
+
+  dimension: In_US {
+    type:  yesno
+    sql:  ${country} = 'USA' ;;
+  }
 
   dimension: region {
     case: {
@@ -100,10 +135,20 @@ view: users {
     }
   }
 
+
   measure: count {
     type: count
     drill_fields: [detail*]
   }
+
+  measure: average_age {
+    type: average
+    sql: users.age ;;
+    precision: 2
+    drill_fields: [id, full_name, age, order_items.count]
+  }
+
+
 
   # ----- Sets of fields for drilling ------
   set: detail {
@@ -116,6 +161,4 @@ view: users {
       user_data.count
     ]
   }
-
-
 }
