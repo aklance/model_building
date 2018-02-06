@@ -48,12 +48,17 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
-  dimension: gender {
+  dimension: gender{
     case: {
       when: {
-        sql: ${TABLE}.gender = "Male";;
+        sql: ${TABLE}.gender is 'm';;
+        label: "Male"
         }
-        else: "Female"
+      when: {
+        sql: ${TABLE}.gender is 'f';;
+        label: "Female"
+      }
+    else: "Unknown"
   }
   }
 
