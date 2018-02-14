@@ -153,6 +153,11 @@ view: users {
     drill_fields: [id, full_name, age, order_items.count]
   }
 
+  measure: first_order_date {
+    type: min
+    sql: users.date ;;
+  }
+
 
 
   # ----- Sets of fields for drilling ------

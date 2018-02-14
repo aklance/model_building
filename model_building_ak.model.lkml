@@ -14,14 +14,24 @@ datagroup: model_building_ak_default_datagroup {
 persist_with: model_building_ak_default_datagroup
 
 explore: events {
-  persist_for: "4 hours"
+  persist_with: model_building_ak_default_datagroup
   }
 
 explore: inventory_items {
+  fields: [ALL_FIELDS*,-inventory_items.order_id]
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
+    }
+
+
+  join: products2 {
+    from:  products {
+      type:  inner
+      sql_on: ${inventory_items.product_id} =${products.id} ;;
+      relationship:  many_to_one
+      }
   }
 }
 

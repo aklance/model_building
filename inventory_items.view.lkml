@@ -102,8 +102,12 @@ view: inventory_items {
   measure: markup_percentage {
     type: number
     sql: (100 * (${total_retail_price} - ${total_cost})) / ${total_cost} ;;
-    value_format_name: decimal_2
+    value_format_name: percent_0
     drill_fields: [id, product_name, order_items.count]
+  }
+  dimension: order_id {
+    type: string
+    sql: ${orders.id} ;;
   }
 
   set: product_details {
