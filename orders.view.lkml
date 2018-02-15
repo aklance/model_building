@@ -1,5 +1,16 @@
 view: orders {
-  sql_table_name: demo_db.orders ;;
+  derived_table: {
+    sql: select *
+              from demo_db.orders
+            where {% condition start_year %} orders.created_date {% endcondition %}  ;;
+  }
+  filter: start_year {
+    suggest_dimension: created_year
+    default_value: "2018"
+  }
+  filter: end_year {
+    suggest_dimension: created_year
+  }
 
   dimension: id {
     primary_key: yes
