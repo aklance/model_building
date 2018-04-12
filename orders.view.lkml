@@ -7,7 +7,9 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: test {}
+  dimension: test {
+  type: number 
+  }
 
 
   dimension_group: created {
