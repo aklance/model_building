@@ -8,7 +8,8 @@ view: orders {
   }
 
   dimension: test {
-  type: number2
+  type: number
+  label: "Test"
   }
 
 
