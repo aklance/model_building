@@ -7,6 +7,9 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: test {}
+
+
   dimension_group: created {
     type: time
     timeframes: [
