@@ -7,6 +7,29 @@ view: order_items {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: dummy_dimension {
+    case: {
+      when: {
+        label: "Count"
+        sql: 1=1 ;;
+      }
+      when: {
+        label: "Count Completed Orders"
+        sql: 1=1 ;;
+      }
+    }
+    }
+
+
+
+
+
+
+#    Ok, so, we have a measure Company Count. If we just run that by itself, we get the total number of companies (80,536): http://c.hlp.sc/0g0h2Y0B3J1t
+#    Companies have *tags*. 0 or more. http://c.hlp.sc/3Z2W2z1Q2U1S
+#    I want to know of that 80,536, how many have 0 and how many have 1 or more.
+#    So pivot the Company Count on whether the Tag Count is 0 or more than 0.
+
   dimension: inventory_item_id {
     type: number
     # hidden: yes

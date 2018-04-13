@@ -22,6 +22,10 @@ view: products {
     sql: ${TABLE}.department ;;
   }
 
+  dimension: test_1 {
+    type:  date
+  }
+
   dimension: item_name {
     type: string
     sql: ${TABLE}.item_name ;;

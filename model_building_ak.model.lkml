@@ -50,7 +50,6 @@ explore: order_items {
   }
 
   join: users {
-    fields: [users.age,users.gender, users.city, users.full_name]
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
