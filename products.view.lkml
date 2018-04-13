@@ -1,4 +1,5 @@
 view: products {
+  view_label: "TESTY_TEST_TEA_SET"
   sql_table_name: demo_db.products ;;
 
   dimension: id {
