@@ -19,6 +19,7 @@ view: products {
 
   dimension: test_1 {
     type: string
+    label: "all"
   }
 
   dimension: department {
@@ -26,9 +27,7 @@ view: products {
     sql: ${TABLE}.department ;;
   }
 
-  dimension: test_1 {
-    type:  date
-  }
+
 
   dimension: item_name {
     type: string
