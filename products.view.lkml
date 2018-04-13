@@ -17,10 +17,6 @@ view: products {
     sql: ${TABLE}.category ;;
   }
 
-  dimension: test_1 {
-    type: string
-  }
-
   dimension: department {
     type: string
     sql: ${TABLE}.department ;;
