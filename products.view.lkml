@@ -23,7 +23,8 @@ view: products {
   }
 
   dimension: test_1 {
-    type:  date
+    type:  string
+    label: "too much"
   }
 
   dimension: item_name {
