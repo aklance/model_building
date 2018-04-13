@@ -26,9 +26,32 @@ view: user_data {
     sql: ${TABLE}.total_num_orders ;;
   }
 
+  dimension: value {
+    label: "Value Filter"
+    sql: ${TABLE}.total_num_orders;;
+  }
+
+  parameter: filter_on_value_type {
+    label: "value"
+    type: string
+
+    allowed_value: {
+      label: "High"
+      value: "yes"
+    }
+    allowed_value: {
+      label: "low"
+      value: "no"
+    }
+  }
+
+  filter: TEST {
+    type:  date
+  }
+
   dimension: is_high_value {
     type: yesno
-    sql: ${total_num_orders} >= 15 ;;
+    sql: ${total_num_orders} >= 15 OR ${total_num_orders} >= 12;;
     label: "High-Value Customer"
     description: "User has more than 15 lifetime orders"
   }

@@ -53,13 +53,13 @@ view: users {
       when: {
         sql: ${TABLE}.gender is 'm';;
         label: "Male"
-        }
+      }
       when: {
         sql: ${TABLE}.gender is 'f';;
         label: "Female"
       }
-    else: "Unknown"
-  }
+      else: "Unknown"
+    }
   }
 
   dimension: last_name {
@@ -83,7 +83,7 @@ view: users {
     style: integer
     sql: ${age};;
     drill_fields: [id, age]
-    }
+  }
 
   dimension: age_bracket {
     case: {
@@ -141,10 +141,47 @@ view: users {
   }
 
 
+  dimension: city_vs_the_rest{
+    type: string
+    sql:  case when {% condition filter_city %} ${city} {% endcondition %}
+                then  {% parameter filter_city %} else 'the rest' end ;;
+
+  }
+
+
+  filter: filter_city {
+    type:  string
+    suggest_dimension: city
+  }
+
+
   measure: count {
     type: count
     drill_fields: [detail*]
   }
+
+  measure: count_name_start_with {
+    type: count
+    filters: {
+      field: name_condition
+      value: "yes"
+    }
+  }
+
+  filter: name_filter {
+    type:  string
+  }
+
+  dimension: name_condition {
+    type:  yesno
+    sql: {% condition name_filter %} ${first_name} {% endcondition %};;
+  }
+
+  dimension: name_parameter {
+    type:  string
+    sql:{% parameter name_filter %} ;;
+  }
+
 
   measure: average_age {
     type: average
